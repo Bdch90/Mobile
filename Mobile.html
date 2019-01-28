@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <title></title>
+    <meta charshet="utf-8" />
+    <style>
+        .popup {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            }
+            .popup .popuptext {
+                visibility: hidden;
+                width: 160px;
+                background-color: #555;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: 8px 0;
+                position: absolute;
+                z-index: 1;
+                bottom: 125%;
+                left: 50%;
+                margin-left: -80px;
+            }
+            .popup .show {
+                visibility: visible;
+            }
+    </style>
+</head>
+<body>
+    <h3>Nokia</h3>
+    <label id = 'trang_thai_nokia'>OFF</label><br><br>
+    <button style = 'width:150px'>Kiểm tra trạng thái</button>
+    <button onclick = 'trang_thai_Nokia(true)' style='width:150px'>Mở nguồn</button>
+    <button onclick = 'trang_thai_Nokia(false)' style='width:150px'>Tắt nguồn</button><br><br>
+    <button onclick= 'soan_tin_nhan_Nokia()' style='width:150px'>Soạn tin nhắn</button>
+    <button class="popup" onclick= 'hien_thi_tin_di_Nokia()'  style='width:150px'>
+        <span class="popuptext" id='myPopup1'></span>Tin nhắn đi</button>
+    <button class="popup" onclick= 'hien_thi_tin_den_Nokia()'  style='width:150px'>
+        <span class="popuptext" id='myPopup2'></span>Tin nhắn đến</button>
+    <label></label><br><br><br>
+
+    <h3>Iphone</h3>
+
+    <label id = 'trang_thai_iphone'>OFF</label><br><br>
+    <button style='width:150px'>Kiểm tra trạng thái</button>
+    <button onclick ='trang_thai_Iphone(true)' style='width:150px'>Mở nguồn</button>
+    <button onclick ='trang_thai_Iphone(false)' style='width:150px'>Tắt nguồn</button><br><br>
+    <button onclick= 'soan_tin_nhan_Iphone()' style='width:150px'>Soạn tin nhắn</button>
+    <button class="popup" onclick= 'hien_thi_tin_di_Nokia()'  style='width:150px'>
+        <span class="popuptext" id='myPopup3'></span>Tin nhắn đi</button>
+    <button class="popup" onclick= 'hien_thi_tin_den_Iphone()'  style='width:150px'>
+        <span class="popuptext" id='myPopup4'></span>Tin nhắn đến</button>
+    <label></label><br><br>
+
+<script type="text/javascript">
+    var Nokia;
+    var Iphone;
+    var checkNokia = false;
+    var checkIphone = false;
+    var tin_nhan_tam_Nokia1 = [];
+    var tin_nhan_tam_Iphone1 = [];
+    var soan_tin_nhan = [];
+    var soan_tin_nhan_Nokia1 = [];
+    var soan_tin_nhan_Iphone1 = [];
+    var tin_nhan_di_Nokia = [];
+    var tin_nhan_di_Iphone = [];
+    var tin_nhan_den_Nokia = [];
+    var tin_nhan_den_Iphone = [];
+	function Mobile () {
+        var tin_nhan_den;
+        var tin_nhan_di;
+		this.tin_nhan_den=tin_nhan_den;
+		this.tin_nhan_di=tin_nhan_di;
+        
+	};
+
+    function soan_tin_nhan_Nokia () {
+            soan_tin_nhan_Nokia1 = tin_nhan_tam_Nokia1.push(prompt('Nhap tin nhan'));
+        };
+    function soan_tin_nhan_Iphone () {
+            soan_tin_nhan_Iphone1 = tin_nhan_tam_Iphone1.push(prompt('Nhap tin nhan'));
+        };
+    function trang_thai_Nokia (checkNokia) {
+        if (checkNokia == true){
+            Nokia = new Mobile();
+            document.getElementById('trang_thai_nokia').innerHTML='ON';
+        }else if (checkNokia == false){
+            Nokia ='';
+            document.getElementById('trang_thai_nokia').innerHTML='OFF';
+        };
+    };
+    function trang_thai_Iphone (checkIphone) {
+        if (checkIphone == true) {
+            Iphone = new Mobile();
+            document.getElementById('trang_thai_iphone').innerHTML='ON';
+        }else if (checkIphone == false) {
+            Iphone ='';
+            document.getElementById('trang_thai_iphone').innerHTML='OFF';
+        };
+    };  
+    function hien_thi_tin_di_Nokia () {
+        var popup1 = document.getElementById("myPopup1");
+        tin_nhan_di_Nokia = tin_nhan_tam_Nokia1;
+        popup1.innerHTML = tin_nhan_di_Nokia;
+        popup1.classList.toggle("show");
+    };
+    function hien_thi_tin_di_Iphone () {
+        var popup2 = document.getElementById("myPopup2");
+        tin_nhan_di_Iphone = tin_nhan_tam_Iphone1;
+        popup2.innerHTML = tin_nhan_di_Iphone;
+        popup2.classList.toggle("show");        
+    };
+    function hien_thi_tin_den_Nokia () {
+        var popup3 = document.getElementById("myPopup3");
+        tin_nhan_den_Nokia = tin_nhan_di_Iphone;
+        popup3.innerHTML = tin_nhan_den_Nokia;
+        popup3.classList.toggle("show");
+    };
+    function hien_thi_tin_den_Iphone () {
+        var popup4 = document.getElementById("myPopup4");
+        tin_nhan_den_Iphone = tin_nhan_di_Nokia;
+        popup4.innerHTML = tin_nhan_den_Iphone;
+        popup4.classList.toggle("show");
+    };
+</script>
+</body>
+</html>
